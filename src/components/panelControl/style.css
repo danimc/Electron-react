@@ -1,0 +1,14 @@
+.player-wrapper {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.react-player {
+  top: 0;
+  left: 0;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+

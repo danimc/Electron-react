@@ -1,25 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route } from "wouter";
+import "./App.css";
+//import { UserContextProvider } from "./context/UserContext";
+//import LoginPage from "./pages/login";
+import HomePage from "./pages/home";
+//import RegisterPage from "./pages/register";
+
+
+const SECURITY = [
+  'http://192.168.0.30:8000/live/stream.flv',
+  'http://192.168.0.30:8000/live/stream.flv',
+  'http://192.168.0.30:8000/live/stream.flv',
+  'http://192.168.0.30:8000/live/stream.flv',
+
+
+ 
+]
+
+
 
 function App() {
   return (
+
+    
+        
+        <HomePage/>
+        
+      
+
+      /*
+      return (
+        <UserContextProvider>
+          <Route component={LoginPage} path="/login" />
+          <Route component={RegisterPage} path="/register" />
+          <Route component={HomePage} path="/" />
+        </UserContextProvider>
+      );*/
+    
+/*
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Hola mundo</h2>
+
+      <div className="App">
+        <header className="App-header">
+
+<div className="react-wrapper">
+        {SECURITY.map(vid => 
+        <ReactPlayer
+        className="react-player"
+            url={vid}
+            playing={true}
+            width={300}
+            
+          /> )}
+
+          </div>
+          
+        </header>
+      </div>
     </div>
-  );
-}
+  );*/
+)}
 
 export default App;
