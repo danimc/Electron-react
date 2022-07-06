@@ -11,7 +11,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 900,
     height: 680,
-   fullscreen:true
+   fullscreen:false
   });
   mainWindow.loadURL(
     isDev
