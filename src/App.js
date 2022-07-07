@@ -5,19 +5,6 @@ import "./App.css";
 import HomePage from "./pages/home";
 //import RegisterPage from "./pages/register";
 
-
-const SECURITY = [
-  'http://192.168.0.30:8000/live/stream.flv',
-  'http://192.168.0.30:8000/live/stream.flv',
-  'http://192.168.0.30:8000/live/stream.flv',
-  'http://192.168.0.30:8000/live/stream.flv',
-
-
- 
-]
-
-
-
 function App() {
   return (
 

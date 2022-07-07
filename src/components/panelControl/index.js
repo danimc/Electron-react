@@ -4,19 +4,16 @@ import "./style.css"
 
 const SECURITY = [
   //'rtmp://192.168.0.30/live/stream',
-  //'ws://192.168.0.30:8000/live/stream.flv',
-  'ws://192.168.0.30:8000/showsession9/stream8.flv',
-  'http://192.168.0.30:8000/showsession9/stream9.flv',
-  'ws://192.168.0.30:8000/showsession9/stream8.flv',
-  'http://192.168.0.30:8000/showsession9/stream9.flv',
-  'ws://192.168.0.30:8000/showsession9/stream8.flv',
-  'http://192.168.0.30:8000/showsession9/stream9.flv',
-  'ws://192.168.0.30:8000/showsession9/stream8.flv',
-  'http://192.168.0.30:8000/showsession9/stream9.flv',
-  'ws://192.168.0.30:8000/showsession9/stream8.flv',
-  'http://192.168.0.30:8000/showsession9/stream9.flv',
-  'ws://192.168.0.30:8000/showsession9/stream8.flv',
-  'http://192.168.0.30:8000/showsession9/stream9.flv'
+  //'http://192.168.0.30:8000/live/stream.flv',
+  'http://192.168.0.30:8000/rog/chedraui.flv',
+  'http://192.168.0.30:8000/rog/coral.flv',
+  'http://192.168.0.30:8000/rog/chedraui.flv',
+  'http://192.168.0.30:8000/rog/coral.flv',
+  'http://192.168.0.30:8000/rog/chedraui.flv',
+  'http://192.168.0.30:8000/rog/coral.flv',  
+  'http://192.168.0.30:8000/rog/chedraui.flv',
+  'http://192.168.0.30:8000/rog/coral.flv',
+
 
 
  
