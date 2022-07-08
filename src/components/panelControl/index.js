@@ -7,12 +7,7 @@ const SECURITY = [
   //'http://192.168.0.30:8000/live/stream.flv',
   'http://192.168.0.30:8000/rog/chedraui.flv',
   'http://192.168.0.30:8000/rog/coral.flv',
-  'http://192.168.0.30:8000/rog/chedraui.flv',
-  'http://192.168.0.30:8000/rog/coral.flv',
-  'http://192.168.0.30:8000/rog/chedraui.flv',
-  'http://192.168.0.30:8000/rog/coral.flv',  
-  'http://192.168.0.30:8000/rog/chedraui.flv',
-  'http://192.168.0.30:8000/rog/coral.flv',
+
 
 
 
