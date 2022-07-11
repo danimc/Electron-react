@@ -1,12 +1,10 @@
 const { ipcMain } = require("electron");
 const electron = require("electron");
-const app = electron.app;
 const isDev = require("electron-is-dev");
-const BrowserWindow = electron.BrowserWindow;
-const ipc = require("electron").ipcRenderer;
-
 const path = require("path");
 const url = require("url");
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -27,7 +25,6 @@ function createWindow() {
     },
   });
 
-  // and load the index.html of the app.
   const startUrl =
     process.env.ELECTRON_START_URL ||
     url.format({
@@ -88,6 +85,7 @@ ipcMain.handle("get-profile-details", (event, args) => {
   });
   win.loadURL(modalPath);
   win.show();
+
 
   return respuesta;
 });
