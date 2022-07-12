@@ -6,17 +6,27 @@ const url = require("url");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
+let isLoginWindow = false;
+let isSystemWindow = true;
 let mainWindow;
+let win;
+
+const startUrl =
+  process.env.ELECTRON_START_URL ||
+  url.format({
+    pathname: isDev
+      ? path.join("http://localhost:3000")
+      : path.join(__dirname, "/../build/index.html"),
+    protocol: "file:",
+    slashes: true,
+  });
 
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    fullscreen: true,
+    frame: false,
     webPreferences: {
-      // The preload file where we will perform our app communication
       preload: isDev
         ? path.join(app.getAppPath(), "./public/preload.js") // Loading it from the public folder for dev
         : path.join(app.getAppPath(), "./build/preload.js"), // Loading it from the build folder for production
@@ -25,14 +35,6 @@ function createWindow() {
     },
   });
 
-  const startUrl =
-    process.env.ELECTRON_START_URL ||
-    url.format({
-      pathname: path.join(__dirname, "/../build/index.html"),
-      protocol: "file:",
-      slashes: true,
-    });
-
   mainWindow.loadURL(startUrl);
 
   // Open the DevTools.
@@ -40,57 +42,65 @@ function createWindow() {
 
   // Emitted when the window is closed.
   mainWindow.on("closed", function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
     mainWindow = null;
   });
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on("ready", createWindow);
 
 // Quit when all windows are closed.
 app.on("window-all-closed", function () {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== "darwin") {
     app.quit();
   }
 });
 
 app.on("activate", function () {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
     createWindow();
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+function loginWindow() {
+  win = new BrowserWindow({
+    width: 749,
+    height: 498,
+    frame: false,
+    webPreferences: {
+      preload: isDev
+        ? path.join(app.getAppPath(), "./public/preload.js")
+        : path.join(app.getAppPath(), "./build/preload.js"),
+      contextIsolation: true,
+    },
+  });
 
-ipcMain.handle("get-profile-details", (event, args) => {
-  const respuesta = {
-    dato1: args.username,
-    dato2: args.pass,
-  };
-
-  const modalPath = path.join("file://", __dirname, "./src/electron/settings.html");
-  let win = new BrowserWindow({ width: 400, height: 200 });
   win.on("close", function () {
     win = null;
   });
-  win.loadURL(modalPath);
+
+  win.loadURL(startUrl);
+  mainWindow.webContents.openDevTools();
   win.show();
+}
 
+ipcMain.handle("get-login-window", () => {
+  if (!isLoginWindow) {
+    loginWindow();
+    mainWindow.hide();
+    isSystemWindow = false;
+    isLoginWindow = true;
+  }
 
-  return respuesta;
+  return true;
 });
 
-ipcMain.on("quit-app", (args) => {
-  app.quit();
-  event.reply("Quit");
+ipcMain.handle("open-system", (event, args) => {
+  if (!isSystemWindow) {
+    createWindow();
+    win.hide();
+    isLoginWindow = false;
+    isSystemWindow = true;
+  }
+
+  return args;
 });

@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
-import {Link, useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import useUser from "../../hooks/useUser";
 
 export default function LoginPage() {
-  const {login, isLogged} = useUser()
-  const [, navigate] = useLocation()
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  const { login, isLogged, changeLoginWindow } = useUser();
+  const [, navigate] = useLocation();
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
   useEffect(() => {
-    if(isLogged) navigate("/home")
-    },[isLogged, navigate]);
+    if (isLogged) navigate("/")
+    else(changeLoginWindow())
+
+  }, [changeLoginWindow, isLogged, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     login({ email, password });
   };
-  
 
   return (
     <>
@@ -24,6 +25,8 @@ export default function LoginPage() {
         <div id="formContent">
           <div className="">
             <h2>Inicio de sesion</h2>
+            <h2>Token = {isLogged}</h2>
+
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -50,9 +53,7 @@ export default function LoginPage() {
             />
           </form>
 
-          <div id="formFooter">
-            <Link to="/register">Registrarse </Link>
-          </div>
+          <div id="formFooter"></div>
         </div>
       </div>
     </>

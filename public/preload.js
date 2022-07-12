@@ -11,8 +11,9 @@ contextBridge.exposeInMainWorld("api", {
       callback(data);
     }),
 
-    getProfileInfo: (args)  => ipcRenderer.invoke('get-profile-details', args),
+    getLoginWindow: async (args)  => ipcRenderer.invoke('get-login-window', args),
 
-    quitApp: (args) => ipcRenderer.send('quit-app', args)
+    openViewSystem: async (args) => ipcRenderer.invoke('open-system', args)
+
 });
 

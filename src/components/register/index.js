@@ -8,16 +8,11 @@ export default function Register() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    registerService(data)
-    .then(e => console.log(e))
+    registerService(data).then((e) => console.log(e));
   };
 
   return (
     <form className="form-group" onSubmit={handleSubmit(onSubmit)}>
-
-
-
-      
       <input
         className="form-control formInput"
         placeholder="Nombre del Usuario"
@@ -32,26 +27,25 @@ export default function Register() {
         render={({ message }) => <small>{message}</small>}
       />
 
-     
       <input
         className="form-control formInput"
         placeholder="Correo Electronico"
         type="email"
         {...register("email", { required: "Ingrese un Correo Valido" })}
       />
-       <ErrorMessage
+      <ErrorMessage
         errors={errors}
         name="email"
         render={({ message }) => <small>{message}</small>}
       />
-    
+
       <input
         className="form-control formInput"
         placeholder="Contraseña"
         type="password"
         {...register("password", { required: true, minLength: 3 })}
       />
-        <ErrorMessage
+      <ErrorMessage
         errors={errors}
         name="password"
         render={({ message }) => <small>{message}</small>}

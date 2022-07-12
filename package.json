@@ -5,6 +5,7 @@
   "description": "Sample App",
   "private": true,
   "dependencies": {
+    "@hookform/error-message": "^2.0.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,6 +13,7 @@
     "electron-squirrel-startup": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.33.1",
     "react-player": "^2.10.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
@@ -26,7 +28,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "nf start",
-    "electron-dev-mac": "ELECTRON_START_URL=http://localhost:3000 electron .",
     "electron": "electron .",
     "package": "electron-forge package",
     "make": "electron-forge make"
@@ -56,6 +57,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.64",
     "@electron-forge/maker-zip": "^6.0.0-beta.64",
     "electron": "^19.0.8",
+    "electron-reload": "^2.0.0-alpha.1",
     "foreman": "^3.0.1"
   },
   "config": {
