@@ -37,7 +37,7 @@
 .label-version {
   position: absolute;
   font-size: 9pt;
-  bottom: -40px;
+  bottom: 10px;
   margin-left: 15px;
   color: #b6b6b6;
 }

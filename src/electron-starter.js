@@ -67,7 +67,7 @@ function loginWindow() {
     width: 749,
     height: 498,
     resizable:false,
-    frame: true,
+    frame: false,
     webPreferences: {
       preload: isDev
         ? path.join(app.getAppPath(), "./public/preload.js")

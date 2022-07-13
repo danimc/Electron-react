@@ -1,13 +1,22 @@
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import registerService from "../../services/register";
+import useUser from "../../hooks/useUser";
 import "./loginForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { Button, Form, Row } from "react-bootstrap";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function LoginForm() {
+  const { login, isLogged, changeLoginWindow } = useUser();
+  const [, navigate] = useLocation();
+
+  useEffect(() => {
+    if (isLogged) navigate("/");
+    else changeLoginWindow();
+  }, [changeLoginWindow, isLogged, navigate]);
+
   const {
     register,
     handleSubmit,
@@ -60,7 +69,11 @@ export default function LoginForm() {
       />
 
       <Row className="justify-content-sm-center">
-        <Button className="center col-sm-5 mt-5 mb-4" type="submit" variant="secondary">
+        <Button
+          className="center col-sm-5 mt-5 mb-4"
+          type="submit"
+          variant="secondary"
+        >
           Iniciar sesion
         </Button>
 
