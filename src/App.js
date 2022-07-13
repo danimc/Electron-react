@@ -9,10 +9,9 @@ import RegisterPage from "./pages/register";
 function App() {
   return (
     <>
-     <HashRouter path="/" >
-      <HomePage />
-     </HashRouter>
-
+      <HashRouter path="/">
+        <LoginPage />
+      </HashRouter>
     </>
     /*
     <UserContextProvider>

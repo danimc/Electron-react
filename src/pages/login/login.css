@@ -1,0 +1,43 @@
+.login-container {
+  margin: 20px 0px 0px 0px;
+}
+.login-page {
+  margin: 20px 0px 0px 0px;
+}
+.login-form {
+   
+   padding-top: 100px;
+}
+.login-page-right {
+  margin: 0px 0px 0px 0px;
+  width: 50px;
+}
+.vrdx-logo {
+  margin-top: 10px;
+  width: 188px;
+  height: 42px;
+  position: absolute;
+}
+
+.algotive-logo {
+  top: 420px;
+  right: 25px;
+  width: 280px;
+  height: 31px;
+  position: absolute;
+}
+.img-login {
+  width: 413px;
+  height: 467px;
+  position: static;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.label-version {
+  position: absolute;
+  font-size: 9pt;
+  bottom: -40px;
+  margin-left: 15px;
+  color: #b6b6b6;
+}

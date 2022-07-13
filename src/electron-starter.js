@@ -24,8 +24,9 @@ const startUrl =
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    fullscreen: true,
-    frame: false,
+    width: 1080,
+    height: 768,
+    frame: true,
     webPreferences: {
       preload: isDev
         ? path.join(app.getAppPath(), "./public/preload.js") // Loading it from the public folder for dev
@@ -65,7 +66,8 @@ function loginWindow() {
   win = new BrowserWindow({
     width: 749,
     height: 498,
-    frame: false,
+    resizable:false,
+    frame: true,
     webPreferences: {
       preload: isDev
         ? path.join(app.getAppPath(), "./public/preload.js")
